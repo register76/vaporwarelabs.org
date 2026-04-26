@@ -4,185 +4,509 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VaporWare Labs</title>
+
   <style>
     :root {
-      --bg: #070707;
-      --panel: #111;
+      --bg: #050505;
+      --panel: #101010;
+      --panel2: #151515;
       --text: #f5f2e8;
-      --muted: #aaa;
+      --muted: #a8a8a8;
       --gold: #d6a93b;
-      --line: #2a2a2a;
+      --gold2: #f5c451;
+      --line: #242424;
     }
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(214,169,59,.12), transparent 28%),
+        linear-gradient(180deg, #050505, #080808);
       color: var(--text);
     }
 
-    header {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 64px 8vw;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(214,169,59,.18), transparent 28%),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,.06), transparent 25%),
-        linear-gradient(135deg, #050505, #101010);
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1180px, 88vw);
+      margin: 0 auto;
     }
 
-    .hero {
-      max-width: 900px;
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5,5,5,.84);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      filter: invert(1);
+    }
+
+    .brand span span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 18px;
+      border-radius: 10px;
+    }
+
+    header {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-logo {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+    }
+
+    .hero-logo::before {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border: 1px solid rgba(214,169,59,.45);
+      border-radius: 50%;
+      box-shadow: 0 0 70px rgba(214,169,59,.18);
+    }
+
+    .hero-logo::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px dashed rgba(214,169,59,.28);
+      border-radius: 50%;
+    }
+
+    .hero-logo img {
+      position: relative;
+      width: min(340px, 70vw);
+      filter: invert(1) drop-shadow(0 0 30px rgba(255,255,255,.08));
     }
 
     .eyebrow {
       color: var(--gold);
-      letter-spacing: .18em;
       text-transform: uppercase;
-      font-size: .8rem;
-      margin-bottom: 22px;
+      letter-spacing: .2em;
+      font-size: .85rem;
+      font-weight: 800;
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 7rem);
-      line-height: .9;
+      font-size: clamp(3.2rem, 8vw, 6.8rem);
+      line-height: .88;
       margin: 0;
+      letter-spacing: -.06em;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--gold2);
     }
 
     .tagline {
-      max-width: 680px;
-      margin: 28px 0;
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      color: var(--muted);
-      line-height: 1.6;
+      max-width: 620px;
+      color: #d0d0d0;
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      line-height: 1.65;
+      margin: 28px 0 0;
     }
 
     .buttons {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 32px;
+      margin-top: 34px;
     }
 
     .button {
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 12px 18px;
-      border-radius: 999px;
       text-decoration: none;
-      font-weight: bold;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-weight: 800;
     }
 
     .button.primary {
-      background: var(--gold);
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
       color: #111;
+      border: none;
     }
 
     section {
-      padding: 72px 8vw;
+      padding: 70px 0;
       border-top: 1px solid var(--line);
     }
 
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      margin: 0 0 24px;
+    .section-kicker {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
-    .grid {
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      margin: 0 0 28px;
+      letter-spacing: -.04em;
+    }
+
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin-top: 28px;
     }
 
     .card {
-      background: linear-gradient(180deg, #151515, #0f0f0f);
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 24px;
-      min-height: 190px;
+      min-height: 230px;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(214,169,59,.55);
+    }
+
+    .icon {
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 20px;
     }
 
     .card h3 {
-      color: var(--gold);
-      margin-top: 0;
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 1.2rem;
     }
 
     .card p {
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
+      margin: 0 0 22px;
     }
 
-    .status {
+    .learn {
+      color: var(--gold);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-text p {
       color: var(--muted);
-      max-width: 760px;
-      line-height: 1.7;
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    .lab-panel {
+      border: 1px solid rgba(214,169,59,.35);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(214,169,59,.16), transparent 30%),
+        linear-gradient(135deg, #101010, #070707);
+      min-height: 280px;
+      padding: 34px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .lab-panel img {
+      width: 140px;
+      filter: invert(1);
+      opacity: .92;
+    }
+
+    .lab-panel ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
     footer {
-      padding: 32px 8vw;
-      color: #777;
       border-top: 1px solid var(--line);
+      padding: 44px 0;
+      color: #777;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .footer-brand img {
+      width: 40px;
+      filter: invert(1);
+    }
+
+    .footer-col h4 {
+      color: var(--gold);
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .75rem;
+    }
+
+    .footer-col a,
+    .footer-col div {
+      display: block;
+      color: #888;
+      text-decoration: none;
+      margin: 8px 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-logo {
+        min-height: 280px;
+      }
+
+      .hero-logo::before {
+        width: 260px;
+        height: 260px;
+      }
+
+      .hero-logo::after {
+        width: 210px;
+        height: 210px;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .projects-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lab-panel {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
+
 <body>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="#">
+        <img src="logo.png" alt="VaporWare Labs logo">
+        <span>VaporWare <span>Labs</span></span>
+      </a>
 
-<header>
-  <div class="hero">
-    <div class="eyebrow">Embedded Systems • Automation • Hardware</div>
-    <h1>VaporWare Labs</h1>
-    <p class="tagline">
-      A personal engineering lab for connected devices, smart spaces,
-      robotics, and beautifully unnecessary hardware experiments.
-    </p>
-    <div class="buttons">
-      <a class="button primary" href="#projects">View Projects</a>
-      <a class="button" href="#lab">About the Lab</a>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#projects">View Projects</a>
+      </div>
     </div>
-  </div>
-</header>
+  </nav>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Project Vapor</h3>
-      <p>Home Assistant, ESP32 nodes, presence sensing, lighting control, and room automation.</p>
+  <header>
+    <div class="wrap hero-grid">
+      <div class="hero-logo">
+        <img src="logo.png" alt="VaporWare Labs logo">
+      </div>
+
+      <div>
+        <div class="eyebrow">Engineering • Automation • Hardware</div>
+        <h1>VaporWare <span>Labs</span></h1>
+        <p class="tagline">
+          A personal engineering lab for connected devices, smart spaces,
+          robotics, and beautifully unnecessary hardware experiments.
+        </p>
+
+        <div class="buttons">
+          <a class="button primary" href="#projects">View Projects →</a>
+          <a class="button" href="#about">About the Lab</a>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>ROKN Sprint Crown</h3>
-      <p>A wearable OLED victory chain for sprint champions. Ridiculous, technical, and fully deserved.</p>
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-kicker">Featured Projects</div>
+      <h2>What We’re Building</h2>
+
+      <div class="projects-grid">
+        <article class="card">
+          <div class="icon">⌂</div>
+          <h3>Project Vapor</h3>
+          <p>Home Assistant, ESP32 nodes, presence sensing, lighting control, and room automation.</p>
+          <a class="learn" href="#">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">♛</div>
+          <h3>ROKN Sprint Crown</h3>
+          <p>A wearable OLED victory chain for sprint champions. Ridiculous, technical, and fully deserved.</p>
+          <a class="learn" href="#">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">▱</div>
+          <h3>Rover Platform</h3>
+          <p>Embedded robotics experiments with Arduino, Raspberry Pi, RC control, and future autonomy.</p>
+          <a class="learn" href="#">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">✣</div>
+          <h3>Flight Systems</h3>
+          <p>Quadcopters, ArduPilot, telemetry, control loops, and field tuning workflows.</p>
+          <a class="learn" href="#">Learn more →</a>
+        </article>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>Rover Platform</h3>
-      <p>Embedded robotics experiments with Arduino, Raspberry Pi, RC control, and future autonomy.</p>
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-text">
+        <div class="section-kicker">About the Lab</div>
+        <h2>Ideas. Built. Tested. Iterated.</h2>
+        <p>
+          VaporWare Labs is where weekend ideas turn into real systems:
+          printed enclosures, embedded controllers, smart home nodes,
+          dashboards, experimental robots, and whatever strange trophy
+          the team deserves next.
+        </p>
+        <a class="button" href="#projects">More About the Lab</a>
+      </div>
+
+      <div class="lab-panel">
+        <img src="logo.png" alt="VaporWare Labs logo">
+        <ul>
+          <li>ESP32 and embedded controllers</li>
+          <li>Home Assistant automation</li>
+          <li>Robotics and control systems</li>
+          <li>3D-printed product prototypes</li>
+        </ul>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>Flight Systems</h3>
-      <p>Quadcopters, ArduPilot, telemetry, control loops, and field tuning workflows.</p>
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="logo.png" alt="VaporWare Labs logo">
+          <span>VaporWare Labs</span>
+        </div>
+        <div style="margin-top:10px;">Build. Automate. Iterate.</div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Built With</h4>
+        <div>ESP32</div>
+        <div>Arduino</div>
+        <div>Raspberry Pi</div>
+        <div>Home Assistant</div>
+      </div>
     </div>
-  </div>
-</section>
-
-<section id="lab">
-  <h2>About</h2>
-  <p class="status">
-    VaporWare Labs is where weekend ideas turn into real systems:
-    printed enclosures, embedded controllers, smart home nodes, dashboards,
-    experimental robots, and whatever strange trophy the team deserves next.
-  </p>
-</section>
-
-<footer>
-  © 2026 VaporWare Labs
-</footer>
-
+  </footer>
 </body>
 </html>
+
