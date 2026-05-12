@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stellar Ranch Farm</title>
+  <style>
+    :root {
+      --cream: #fff7e8;
+      --gold: #f2b84b;
+      --dark: #2f2418;
+      --green: #5f7f4f;
+      --brown: #8a5a2b;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 24px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 247, 232, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      margin-left: 24px;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      min-height: 85vh;
+      padding: 80px 8%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 48px;
+      background:
+        linear-gradient(rgba(255,247,232,0.88), rgba(255,247,232,0.88)),
+        url("https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid var(--dark);
+    }
+
+    .btn.primary {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--dark);
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(47, 36, 24, 0.18);
+    }
+
+    .hero-card img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin: 0 auto 48px;
+      text-align: center;
+      font-size: 1.15rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(47, 36, 24, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--brown);
+    }
+
+    .why {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .why .card {
+      color: var(--dark);
+    }
+
+    .cta {
+      text-align: center;
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .cta h2 {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      margin-bottom: 28px;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      padding: 32px 8%;
+      text-align: center;
+      background: #1f1710;
+      color: var(--cream);
+    }
+
+    @media (max-width: 850px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">✦ Stellar Ranch Farm</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#eggs">Eggs</a>
+      <a href="#contact">Order</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Farm-Fresh Eggs, Straight from Stellar Ranch</h1>
+        <p>
+          Pasture-raised hens, rich golden yolks, and honest eggs from a small local farm.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#contact">Order Eggs</a>
+          <a class="btn secondary" href="#about">Meet the Flock</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?auto=format&fit=crop&w=900&q=80" alt="Farm fresh eggs in a basket">
+        <h2>Fresh from happy hens</h2>
+        <p>Collected regularly, packed with care, and ready for your kitchen.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">Good Eggs Start with Happy Hens</h2>
+      <p class="section-intro">
+        At Stellar Ranch Farm, we believe better eggs come from better care.
+        Our hens roam, scratch, forage, and enjoy a calm farm environment.
+        The result is fresh, flavorful eggs with deep golden yolks and quality
+        you can see the moment you crack one open.
+      </p>
+    </section>
+
+    <section id="eggs">
+      <h2 class="section-title">Our Eggs</h2>
+      <p class="section-intro">
+        Simple, fresh, and local — exactly how eggs should be.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Fresh Dozen</h3>
+          <p>Locally collected, cleaned, and packed with care.</p>
+        </div>
+
+        <div class="card">
+          <h3>Pasture-Raised</h3>
+          <p>From hens with room to roam, forage, and enjoy the outdoors.</p>
+        </div>
+
+        <div class="card">
+          <h3>Seasonal Availability</h3>
+          <p>Egg supply changes naturally with the season and rhythm of the flock.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="why">
+      <h2 class="section-title">Why Choose Stellar Ranch?</h2>
+      <p class="section-intro">
+        Small-farm quality, honest care, and eggs worth waking up for.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Local</h3>
+          <p>Raised and packed close to home.</p>
+        </div>
+
+        <div class="card">
+          <h3>Fresh</h3>
+          <p>Collected regularly for peak flavor and quality.</p>
+        </div>
+
+        <div class="card">
+          <h3>Humanely Raised</h3>
+          <p>Healthy hens, clean coops, open air, and thoughtful care.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <h2>Ready for Better Eggs?</h2>
+      <p>Bring home farm-fresh eggs from Stellar Ranch Farm.</p>
+      <a class="btn primary" href="mailto:hello@stellarranchfarm.com">Contact Us to Order</a>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Stellar Ranch Farm</strong></p>
+    <p>Fresh eggs from happy hens under wide-open skies.</p>
+  </footer>
+
+</body>
+</html>
+
