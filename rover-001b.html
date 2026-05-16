@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rover-001b | VaporWare Labs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">VaporWare Labs</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="mailto:lab@vaporwarelabs.org">Contact</a>
+      <a href="https://github.com/VaporWareLabs" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="project-page">
+
+    <section class="project-hero">
+      <p class="eyebrow">Active Build</p>
+      <h1>Rover-001b</h1>
+      <p class="hero-subtitle">
+        A modular RC rover platform built for clean wiring, Raspberry Pi integration,
+        and future autonomy experiments.
+      </p>
+    </section>
+
+    <section>
+      <h2>Project Overview</h2>
+      <p>
+        Rover-001b is the next evolution of the VaporWare Labs rover platform.
+        It starts as a reliable RC-controlled rover and grows toward a mobile
+        Project Vapor node with onboard computing, telemetry, sensors, and
+        eventually autonomous navigation.
+      </p>
+    </section>
+
+    <section>
+      <h2>Current Architecture</h2>
+      <ul>
+        <li>Arduino Nano Every for real-time motor and RC control</li>
+        <li>RadioMaster Boxer transmitter with ER4 receiver</li>
+        <li>TB6612FNG motor driver</li>
+        <li>TT gear motors</li>
+        <li>2020 aluminum extrusion frame</li>
+        <li>Raspberry Pi 5 planned for high-level control</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Design Goals</h2>
+      <ul>
+        <li>Clean, modular, serviceable wiring</li>
+        <li>Stable RC driving baseline</li>
+        <li>Separate real-time control from high-level compute</li>
+        <li>Support future sensors, camera, and telemetry</li>
+        <li>Eventually integrate with Home Assistant and Project Vapor</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Status</h2>
+      <p>
+        Rover-001b is currently in hardware bring-up. The frame, motor wiring,
+        receiver wiring, and Arduino control path are being tested. The next
+        milestone is reliable RC control followed by Raspberry Pi integration.
+      </p>
+    </section>
+
+    <section>
+      <h2>Roadmap</h2>
+      <ol>
+        <li>Complete RC control bring-up</li>
+        <li>Finalize 5V power system</li>
+        <li>Add Raspberry Pi 5 high-level computer</li>
+        <li>Create Pi-to-Arduino command and telemetry interface</li>
+        <li>Add camera and basic vision experiments</li>
+        <li>Integrate with Project Vapor / Home Assistant</li>
+        <li>Explore docking, charging, and indoor navigation</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Why This Project Matters</h2>
+      <p>
+        Rover-001b is more than a small robot. It is a testbed for embedded
+        control, mechanical design, power distribution, computer vision,
+        automation, and human-centered smart-home robotics.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 VaporWare Labs</p>
+  </footer>
+
+</body>
+</html>
