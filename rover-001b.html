@@ -4,98 +4,364 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rover-001b | VaporWare Labs</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #101010;
+      --panel2: #151515;
+      --text: #f5f2e8;
+      --muted: #a8a8a8;
+      --gold: #d6a93b;
+      --gold2: #f5c451;
+      --line: #242424;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(214,169,59,.12), transparent 28%),
+        linear-gradient(180deg, #050505, #080808);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max-width), 88vw);
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5,5,5,.84);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .brand span span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 18px;
+      border-radius: 10px;
+    }
+
+    /* Hero */
+    header {
+      padding: 90px 0 70px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: .85rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: .92;
+      margin: 0 0 20px;
+      letter-spacing: -.05em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      font-size: 1.2rem;
+      color: #d0d0d0;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 800;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      color: #111;
+      border: none;
+    }
+
+    /* Sections */
+    section {
+      padding: 70px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      margin: 0 0 24px;
+      letter-spacing: -.04em;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    ul {
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 22px;
+    }
+
+    /* Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .status-box {
+      border: 1px solid rgba(214,169,59,.35);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(214,169,59,.10), transparent 35%),
+        linear-gradient(135deg, #101010, #070707);
+    }
+
+    .status-box h3 {
+      margin-top: 0;
+      color: var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 0;
+      color: #777;
+      text-align: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <a href="index.html" class="logo">VaporWare Labs</a>
-    <nav>
-      <a href="index.html#projects">Projects</a>
-      <a href="mailto:lab@vaporwarelabs.org">Contact</a>
-      <a href="https://github.com/VaporWareLabs" target="_blank" rel="noopener">GitHub</a>
-    </nav>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">
+        <img src="logo-white.png" alt="VaporWare Labs logo">
+        <span>VaporWare <span>Labs</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="mailto:lab@vaporwarelabs.org">Contact</a>
+        <a class="nav-cta"
+           href="https://github.com/VaporWareLabs"
+           target="_blank"
+           rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">Active Build</div>
+      <h1>Rover-001b</h1>
+      <p class="subtitle">
+        A modular RC rover platform built around Arduino, Raspberry Pi,
+        and 2020 aluminum extrusion. Designed as a clean, serviceable robotics
+        platform and future mobile node for Project Vapor.
+      </p>
+
+      <div class="buttons">
+        <a class="button primary"
+           href="https://github.com/VaporWareLabs"
+           target="_blank"
+           rel="noopener">View Source Code</a>
+        <a class="button" href="index.html#projects">← Back to Projects</a>
+      </div>
+    </div>
   </header>
 
-  <main class="project-page">
-
-    <section class="project-hero">
-      <p class="eyebrow">Active Build</p>
-      <h1>Rover-001b</h1>
-      <p class="hero-subtitle">
-        A modular RC rover platform built for clean wiring, Raspberry Pi integration,
-        and future autonomy experiments.
-      </p>
-    </section>
-
-    <section>
-      <h2>Project Overview</h2>
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">Overview</div>
+      <h2>Purpose-Built for Experimentation</h2>
       <p>
-        Rover-001b is the next evolution of the VaporWare Labs rover platform.
-        It starts as a reliable RC-controlled rover and grows toward a mobile
-        Project Vapor node with onboard computing, telemetry, sensors, and
-        eventually autonomous navigation.
+        Rover-001b is the second-generation VaporWare Labs rover platform.
+        It begins as a robust RC-controlled rover and evolves into a
+        mobile robotics testbed for autonomy, computer vision,
+        Home Assistant integration, and autonomous docking.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Current Architecture</h2>
-      <ul>
-        <li>Arduino Nano Every for real-time motor and RC control</li>
-        <li>RadioMaster Boxer transmitter with ER4 receiver</li>
-        <li>TB6612FNG motor driver</li>
-        <li>TT gear motors</li>
-        <li>2020 aluminum extrusion frame</li>
-        <li>Raspberry Pi 5 planned for high-level control</li>
-      </ul>
-    </section>
+  <section>
+    <div class="wrap grid-2">
+      <div class="card">
+        <div class="section-kicker">Current Hardware</div>
+        <h2>Architecture</h2>
+        <ul>
+          <li>Arduino Nano Every</li>
+          <li>RadioMaster Boxer + ER4 receiver</li>
+          <li>TB6612FNG motor driver</li>
+          <li>TT gear motors</li>
+          <li>Raspberry Pi 5 (planned)</li>
+          <li>2020 aluminum extrusion frame</li>
+          <li>3D printed mounting brackets</li>
+        </ul>
+      </div>
 
-    <section>
-      <h2>Design Goals</h2>
+      <div class="card status-box">
+        <h3>Current Status</h3>
+        <p>
+          Hardware bring-up is underway. Motor wiring, RC receiver,
+          and Arduino control software are being validated.
+          Next milestone: stable RC control and power-system refinement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">Design Goals</div>
+      <h2>Engineering Priorities</h2>
       <ul>
         <li>Clean, modular, serviceable wiring</li>
-        <li>Stable RC driving baseline</li>
-        <li>Separate real-time control from high-level compute</li>
-        <li>Support future sensors, camera, and telemetry</li>
-        <li>Eventually integrate with Home Assistant and Project Vapor</li>
+        <li>Reliable RC control baseline</li>
+        <li>Separation of real-time and high-level computing</li>
+        <li>Camera and computer vision support</li>
+        <li>Home Assistant and Project Vapor integration</li>
+        <li>Future autonomous docking and charging</li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Status</h2>
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">Roadmap</div>
+      <h2>Next Milestones</h2>
+      <ul>
+        <li>Complete RC control testing</li>
+        <li>Install robust 5V power system</li>
+        <li>Integrate Raspberry Pi 5</li>
+        <li>Implement Pi-to-Arduino telemetry link</li>
+        <li>Add camera and vision processing</li>
+        <li>Home Assistant integration</li>
+        <li>Autonomous docking experiments</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">Why It Matters</div>
+      <h2>A Mobile Vapor Node</h2>
       <p>
-        Rover-001b is currently in hardware bring-up. The frame, motor wiring,
-        receiver wiring, and Arduino control path are being tested. The next
-        milestone is reliable RC control followed by Raspberry Pi integration.
+        Rover-001b combines embedded systems, robotics, mechanical design,
+        power electronics, and software integration into one evolving platform.
+        It serves as a practical engineering sandbox and a stepping stone toward
+        a fully autonomous mobile assistant.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Roadmap</h2>
-      <ol>
-        <li>Complete RC control bring-up</li>
-        <li>Finalize 5V power system</li>
-        <li>Add Raspberry Pi 5 high-level computer</li>
-        <li>Create Pi-to-Arduino command and telemetry interface</li>
-        <li>Add camera and basic vision experiments</li>
-        <li>Integrate with Project Vapor / Home Assistant</li>
-        <li>Explore docking, charging, and indoor navigation</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Why This Project Matters</h2>
-      <p>
-        Rover-001b is more than a small robot. It is a testbed for embedded
-        control, mechanical design, power distribution, computer vision,
-        automation, and human-centered smart-home robotics.
-      </p>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <p>© 2026 VaporWare Labs</p>
+  <footer>
+    <div class="wrap">
+      © 2026 VaporWare Labs • Build. Automate. Iterate.
+    </div>
   </footer>
 
 </body>
