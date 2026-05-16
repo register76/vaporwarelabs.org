@@ -1,0 +1,453 @@
+<!-- =========================================================
+     File: project-vapor.html
+     Project Vapor page with embedded CSS
+     ========================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Project Vapor | VaporWare Labs</title>
+  <meta
+    name="description"
+    content="Project Vapor is a custom smart home automation platform built with Home Assistant, ESP32 nodes, voice control, occupancy sensing, and intelligent lighting."
+  />
+
+  <style>
+    /* =========================================================
+       Base Layout
+       ========================================================= */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #e5e7eb;
+      background: #0b1120;
+    }
+
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       Header / Navigation
+       ========================================================= */
+    .site-header {
+      background: rgba(11, 17, 32, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #60a5fa;
+    }
+
+    /* =========================================================
+       Hero
+       ========================================================= */
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.25), transparent 40%),
+        radial-gradient(circle at top left, rgba(6, 182, 212, 0.18), transparent 35%),
+        linear-gradient(135deg, #0f172a, #111827 60%, #1e3a5f);
+      padding: 6rem 0 5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+    }
+
+    .hero-subtitle {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       Sections
+       ========================================================= */
+    .section {
+      padding: 4.5rem 0;
+    }
+
+    .alt-bg {
+      background: #111827;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #ffffff;
+    }
+
+    .section p {
+      max-width: 800px;
+      color: #cbd5e1;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       Cards
+       ========================================================= */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(96, 165, 250, 0.4);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: #cbd5e1;
+    }
+
+    /* =========================================================
+       Lists
+       ========================================================= */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.9rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #cbd5e1;
+    }
+
+    .feature-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+      font-weight: bold;
+    }
+
+    /* =========================================================
+       Timeline
+       ========================================================= */
+    .timeline {
+      margin-top: 2rem;
+    }
+
+    .timeline-item {
+      border-left: 3px solid #3b82f6;
+      padding-left: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 0.4rem;
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    .timeline-item p {
+      margin: 0;
+    }
+
+    /* =========================================================
+       Button
+       ========================================================= */
+    .button {
+      display: inline-block;
+      margin-top: 1rem;
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      color: #ffffff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       Footer
+       ========================================================= */
+    .site-footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.15);
+      padding: 2rem 0;
+      text-align: center;
+      color: #94a3b8;
+      background: #0b1120;
+    }
+
+    /* =========================================================
+       Responsive
+       ========================================================= */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 4.5rem 0 4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.05rem;
+      }
+
+      .section {
+        padding: 3.5rem 0;
+      }
+
+      .site-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 0.75rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">VaporWare Labs</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="rover-001b.html">Rover-001b</a>
+        <a href="project-vapor.html" class="active">Project Vapor</a>
+        <a href="https://github.com/VaporWareLabs" target="_blank">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Project Vapor</h1>
+      <p class="hero-subtitle">
+        A custom smart home platform built with Home Assistant, ESP32 nodes,
+        intelligent lighting, occupancy sensing, and local voice control.
+      </p>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section">
+    <div class="container">
+      <h2>Overview</h2>
+      <p>
+        Project Vapor is my long-term effort to build a highly customized smart
+        home ecosystem that combines automation, embedded systems, and industrial
+        design into a cohesive user experience.
+      </p>
+      <p>
+        The platform uses Home Assistant as the central controller, with
+        custom-built ESP32 nodes for lighting, presence sensing, voice
+        interaction, and tactile control interfaces.
+      </p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section alt-bg">
+    <div class="container">
+      <h2>Key Features</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>🎙 Voice Control</h3>
+          <p>Local voice satellites powered by Home Assistant Assist.</p>
+        </div>
+
+        <div class="card">
+          <h3>💡 Intelligent Lighting</h3>
+          <p>WLED-based RGBW lighting with custom work and relaxation scenes.</p>
+        </div>
+
+        <div class="card">
+          <h3>👁 Presence Detection</h3>
+          <p>mmWave sensors detect occupancy and automate room behavior.</p>
+        </div>
+
+        <div class="card">
+          <h3>🎛 Custom Controllers</h3>
+          <p>Large encoder-based desktop interfaces with OLED displays.</p>
+        </div>
+
+        <div class="card">
+          <h3>🤖 Robot Eyes</h3>
+          <p>Animated display modules that add personality and visual feedback.</p>
+        </div>
+
+        <div class="card">
+          <h3>📧 Email Automation</h3>
+          <p>Email-triggered workflows using VaporWare Labs aliases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="section">
+    <div class="container">
+      <h2>System Architecture</h2>
+      <ul class="feature-list">
+        <li><strong>Core Controller:</strong> Raspberry Pi 5 running Home Assistant OS</li>
+        <li><strong>Voice Satellite:</strong> M5Stack Atom Echo</li>
+        <li><strong>Lighting Nodes:</strong> ESP32 devices running WLED</li>
+        <li><strong>Presence Nodes:</strong> ESP32-C3 + LD2410C mmWave sensors</li>
+        <li><strong>Control Interfaces:</strong> Custom desktop controllers</li>
+        <li><strong>Audio Nodes:</strong> Raspberry Pi-based network speakers</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Progress -->
+  <section class="section alt-bg">
+    <div class="container">
+      <h2>Current Progress</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>✅ Home Assistant Core Online</h3>
+          <p>Raspberry Pi 5 deployed as the central automation server.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>✅ Studio Lighting Operational</h3>
+          <p>RGBW LED strips controlled by WLED and Home Assistant.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>✅ Presence Automation Working</h3>
+          <p>mmWave sensors automatically turn lights on and off.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>🚧 Scene Controller in Development</h3>
+          <p>Premium desktop controller with a large rotary encoder.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>🚀 Future Vision</h3>
+          <p>A responsive home that feels intuitive and alive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub -->
+  <section class="section">
+    <div class="container">
+      <h2>Source Code</h2>
+      <p>
+        ESPHome configurations, CAD models, and automation scripts are available
+        on GitHub.
+      </p>
+      <a class="button"
+         href="https://github.com/VaporWareLabs"
+         target="_blank">
+        View on GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section alt-bg">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>
+        Interested in custom automation, embedded systems, or collaboration?
+      </p>
+      <p>
+        <a href="mailto:lab@vaporwarelabs.org">lab@vaporwarelabs.org</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 VaporWare Labs. Built in Tampa, Florida.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
