@@ -99,16 +99,25 @@
             <div>
               <h3>vaporCAM</h3>
               <p>Active Development</p>
-              <small>Stability, earned value, multi-project workflows, deployment</small>
+              <small>Production hardening, search fixes, release stabilization, and project-controls workflows.</small>
             </div>
           </article>
 
           <article class="status-card">
-            <span class="status-dot experimental"></span>
+            <span class="status-dot active"></span>
             <div>
-              <h3>vaporAI</h3>
-              <p>Experimental</p>
-              <small>Local RAG, model evaluation, engineering memory</small>
+              <h3>vaporFUND</h3>
+              <p>Active Development</p>
+              <small>Multi-account portfolio allocation, contribution planning, and account-aware investment workflows.</small>
+            </div>
+          </article>
+
+          <article class="status-card">
+            <span class="status-dot active"></span>
+            <div>
+              <h3>vaporEYES</h3>
+              <p>Active Development</p>
+              <small>ESP32-C3 robotic eyes with pan/tilt motion, autonomous behavior, embedded control, and a camera-tracking roadmap.</small>
             </div>
           </article>
 
@@ -117,25 +126,16 @@
             <div>
               <h3>vaporCORE</h3>
               <p>Operational</p>
-              <small>Self-hosted development, testing, and AI infrastructure</small>
-            </div>
-          </article>
-
-          <article class="status-card">
-            <span class="status-dot active"></span>
-            <div>
-              <h3>vaporCHEF</h3>
-              <p>Active Development</p>
-              <small>Version-controlled recipes and cooking experiments</small>
+              <small>Self-hosted development, testing, deployment, and local-AI infrastructure.</small>
             </div>
           </article>
 
           <article class="status-card">
             <span class="status-dot experimental"></span>
             <div>
-              <h3>Robotics</h3>
+              <h3>vaporAI</h3>
               <p>Experimental</p>
-              <small>Quadcopters, indoor flight, rovers, autonomy</small>
+              <small>Local RAG, model evaluation, private engineering memory, and self-hosted inference.</small>
             </div>
           </article>
 
@@ -172,20 +172,93 @@
             <h3>vaporCAM</h3>
             <p>
               An open-source engineering planning and control-account management
-              application built with Django.
+              application built with Django for real project execution.
             </p>
             <ul>
               <li>Jira Feature and Story synchronization</li>
               <li>Monthly ETC and labor actuals</li>
-              <li>Feature rollups and earned-value visibility</li>
-              <li>Search, notes, audit history, and Excel export</li>
-              <li>Linux deployment with Gunicorn and Nginx</li>
+              <li>Earned-value and CPI visibility</li>
+              <li>Multi-project CAM and PM workflows</li>
+              <li>Search, filtering, notes, audit history, and Excel workflows</li>
+              <li>Production deployment with Gunicorn and Nginx</li>
+              <li>Automated regression testing</li>
             </ul>
             <p class="card-focus">
-              <strong>Current focus:</strong> production stabilization, usability,
-              deployment hardening, and Excel round-trip workflows.
+              <strong>Current focus:</strong> production hardening, search and usability fixes,
+              and formal release stabilization.
             </p>
             <a class="card-link" href="https://github.com/VaporWareLabs/vaporcam">View repository →</a>
+          </article>
+
+          <article class="project-card">
+            <div class="card-topline">
+              <span class="pill active-pill">Active Development</span>
+              <span class="project-icon" aria-hidden="true">⌁</span>
+            </div>
+            <p class="project-type">Financial Software</p>
+            <h3>vaporFUND</h3>
+            <p>
+              A Django-based portfolio allocation assistant designed to maintain
+              a target investment allocation primarily through new
+              contributions rather than forced rebalancing.
+            </p>
+
+            <ul>
+              <li>Multiple investment accounts</li>
+              <li>Account-specific target allocations</li>
+              <li>Contribution-driven purchase recommendations</li>
+              <li>Whole-share purchase planning</li>
+              <li>Multi-purchase recommendation workflows</li>
+              <li>Account-aware holdings and contribution history</li>
+              <li>Buy-only allocation strategy</li>
+              <li>Compliance-conscious trade planning</li>
+              <li>Automated test coverage</li>
+            </ul>
+
+            <p class="card-focus">
+              <strong>Current focus:</strong>
+              expanding multi-account workflows, refining the dashboard and
+              account-settings experience, and supporting real portfolio
+              accounts with known cost basis.
+            </p>
+          </article>
+
+          <article class="project-card featured">
+            <div class="card-topline">
+              <span class="pill active-pill">Active Development</span>
+              <span class="project-icon" aria-hidden="true">⌁</span>
+            </div>
+            <p class="project-type">Robotics / Embedded Systems</p>
+            <h3>vaporEYES</h3>
+            <p>
+              A 3D-printed robotic eye platform combining embedded control,
+              mechanical design, electromechanical integration, and autonomous
+              behavior.
+            </p>
+
+            <ul>
+              <li>ESP32-C3 control</li>
+              <li>Independent pan and tilt servos</li>
+              <li>External 5 V servo power system</li>
+              <li>Calibrated 50°–130° safe motion envelope</li>
+              <li>Smooth spline-based eye movement</li>
+              <li>Autonomous behavior state machine</li>
+              <li>Idle, scan, fixation, and glance behaviors</li>
+              <li>3D-printed mechanical structure</li>
+            </ul>
+
+            <p class="card-focus">
+              <strong>Current focus:</strong>
+              designing the power-supply substructure and clean mounting for the
+              ESP32 and WAGO terminals, followed by camera-based person and face
+              tracking.
+            </p>
+
+            <p class="roadmap">
+              <strong>Planned vision architecture:</strong>
+              Raspberry Pi with Camera Module 3 Wide performing person/face
+              detection and sending target coordinates to the ESP32.
+            </p>
           </article>
 
           <article class="project-card">
@@ -197,16 +270,21 @@
             <h3>vaporCORE</h3>
             <p>
               The self-hosted platform supporting VaporWare Labs development,
-              experimentation, and local AI.
+              experimentation, deployment, and local AI.
             </p>
             <ul>
               <li>Proxmox virtualization</li>
               <li>Ubuntu virtual machines</li>
-              <li>Tailscale remote connectivity</li>
               <li>Development and test environments</li>
+              <li>Self-hosted project services</li>
               <li>Snapshots and infrastructure experiments</li>
+              <li>Cloudflare-based routing and remote access</li>
             </ul>
           </article>
+
+
+
+
 
           <article class="project-card">
             <div class="card-topline">
@@ -352,19 +430,19 @@
           </article>
           <article class="tech-card">
             <h3>Hardware</h3>
-            <p>Raspberry Pi, Arduino, ESP32, STM32, RC systems</p>
+            <p>Raspberry Pi, ESP32 / ESP32-C3, Arduino, STM32, servos, sensors, RC systems</p>
           </article>
           <article class="tech-card">
             <h3>Infrastructure</h3>
-            <p>Ubuntu, Linux, Proxmox, Docker, Gunicorn, Nginx, systemd, Tailscale</p>
+            <p>Ubuntu, Linux, Proxmox, Docker, Gunicorn, Nginx, systemd, Cloudflare</p>
           </article>
           <article class="tech-card">
             <h3>Robotics &amp; Control</h3>
-            <p>ArduPilot, MAVLink, computer vision, autonomous systems</p>
+            <p>ArduPilot, MAVLink, servo control, embedded state machines, computer vision, autonomous systems</p>
           </article>
           <article class="tech-card">
             <h3>Mechanical Design</h3>
-            <p>SolidWorks, CAD prototyping, 3D printing, 2020 aluminum extrusion</p>
+            <p>SolidWorks, CAD prototyping, 3D printing, electromechanical integration, 2020 aluminum extrusion</p>
           </article>
           <article class="tech-card">
             <h3>Home Automation</h3>
@@ -409,14 +487,14 @@
           <h2 id="focus-title">Where the lab is spending its energy</h2>
         </div>
         <ul class="focus-list">
-          <li>Stabilizing and improving vaporCAM</li>
-          <li>Expanding the vaporAI RAG knowledge system</li>
-          <li>Building the vaporware-knowledge repository</li>
-          <li>Documenting vaporCORE infrastructure</li>
-          <li>Growing vaporCHEF</li>
-          <li>Improving VaporWareLabs.org</li>
-          <li>Preserving project history and lessons learned</li>
-          <li>Building a consistent public identity across the ecosystem</li>
+          <li>Stabilizing vaporCAM toward v0.8</li>
+          <li>Expanding vaporFUND multi-account portfolio workflows</li>
+          <li>Building the VaporEYES power/electronics chassis</li>
+          <li>Developing autonomous VaporEYES behavior</li>
+          <li>Preparing VaporEYES for camera-based person tracking</li>
+          <li>Maintaining vaporCORE self-hosted infrastructure</li>
+          <li>Improving project documentation and release history</li>
+          <li>Keeping VaporWareLabs.org aligned with active lab work</li>
         </ul>
       </div>
     </section>
